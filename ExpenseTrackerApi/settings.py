@@ -51,6 +51,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
 ]
+AUTH_USER_MODEL="Authentication.MyUser"
+
 
 ROOT_URLCONF = 'ExpenseTrackerApi.urls'
 
