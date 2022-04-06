@@ -9,7 +9,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MyUser
-        fields=['email','username','password']
+        fields = ['email', 'username', 'password']
 
     def validate(self, attrs):
         email = attrs.get('email', '')
@@ -22,3 +22,11 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return MyUser.objects.create_user(**validated_data)
+
+
+class EmailVerificationerializer(serializers.ModelSerializer):
+    token = serializers.CharField(max_length=555)
+
+    class Meta:
+        model = MyUser
+        fields = ['token']

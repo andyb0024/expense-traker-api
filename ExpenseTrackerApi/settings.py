@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'Expense',
     'Authentication',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
@@ -133,4 +134,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
+x=os.environ.get('EMAIL_HOST_PASSWORD')
+print(x)
 from.email import (EMAIL_HOST_PASSWORD,EMAIL_HOST_USER)
