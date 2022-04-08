@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager, PermissionsMixin)
-
+from rest_framework_simplejwt.tokens import RefreshToken
 
 # Create your models here.
 class MyUserManager(BaseUserManager):
@@ -57,8 +57,13 @@ class MyUser(AbstractBaseUser):
     def __str__(self):
         return self.email
 
-    def token(self):
-        return ''
+    def tokens(self):
+        refresh = RefreshToken.for_user(self)
+        context= {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token)
+        }
+        return  context
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"

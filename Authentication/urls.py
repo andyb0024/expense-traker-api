@@ -1,9 +1,10 @@
 from django.urls import path
 
-from .views import (RegisterView,VerifyEmail)
+from .views import (RegisterView,VerifyEmail,LoginViewApi)
 
 urlpatterns = [
      path('register', RegisterView.as_view(),name='register'),
+     path('login', LoginViewApi.as_view(), name='login'),
      path('email-verify', VerifyEmail.as_view(), name='email-verify'),
      # path('add-expense', AddExpenseView.as_view(), name='add'),
      # path('delete/<int:pk>/', DeleteExpenseView.as_view(),name='delete'),
