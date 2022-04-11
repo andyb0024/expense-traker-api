@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'Authentication',
     'rest_framework_simplejwt',
-    'drf_yasg'
+    'drf_yasg',
+    'Expenses',
 ]
 
 MIDDLEWARE = [

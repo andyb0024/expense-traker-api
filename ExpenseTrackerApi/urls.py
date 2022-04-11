@@ -39,4 +39,5 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('api/v1/auth/', include(("Authentication.urls", 'Authentication'), namespace='Authentication')),
+    path('api/v1/expenses/', include(("Expenses.urls", 'Expenses'), namespace='Expenses')),
 ]
