@@ -11,12 +11,13 @@ from rest_framework.views import APIView
 
 from Expenses.models import Expense, Income
 from Expenses.serializers import ExpenseSerializer, IncomeSerializer
-
+from.permissions import IsOwner
 
 class ExpenseListAPIView(ListCreateAPIView):
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,IsOwner)
     serializer_class = ExpenseSerializer
     queryset = Expense.objects.all().recent()
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
 
     def perform_create(self, serializer):
         return serializer.save(owner=self.request.user)
@@ -27,7 +28,7 @@ class ExpenseListAPIView(ListCreateAPIView):
 
 # get the day expenses
 class ExpenseByDay(APIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,IsOwner)
 
     def get(self, request):
         qs = Expense.objects.all().recent()
@@ -41,7 +42,7 @@ class ExpenseByDay(APIView):
 
 
 class ExpenseByWeek(APIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwner)
 
     # authentication_classes = [SessionAuthentication]
     def get(self, request):
@@ -53,7 +54,7 @@ class ExpenseByWeek(APIView):
 
 
 class IncomeListView(APIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwner)
 
     def get_object(self, pk):
         try:
