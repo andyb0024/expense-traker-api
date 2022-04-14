@@ -1,10 +1,10 @@
 from django.urls import path
 from . import views
 
-
 urlpatterns = [
-    path('', views.ExpenseListAPIView.as_view(), name="expenses"),
+    path('expenses', views.ExpenseListAPIView.as_view(), name="expenses"),
     path('daily', views.ExpenseByDay.as_view(), name='day-list-api'),
     path('weekly', views.ExpenseByWeek.as_view(), name='week-list-api'),
-    # path('<int:id>', views.ExpenseDetailAPIView.as_view(), name="expense"),
+    path('income/<int:pk>', views.IncomeListView.as_view(), name="amount-apis"),
+    # path('income', views.IncomeListView.as_view(), name='amount-apis'),
 ]
