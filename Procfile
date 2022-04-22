@@ -1,4 +1,4 @@
 
 release: python manage.py makemigrations
 release: python manage.py migrate
-web: gunicorn expensetrackerapi.wsgi
+web: gunicorn ExpenseTrackerApi.wsgi
