@@ -14,7 +14,7 @@ from Expenses.serializers import ExpenseSerializer, IncomeSerializer
 from.permissions import IsOwner
 
 class ExpenseListAPIView(ListCreateAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,IsOwner)
+    # permission_classes = (permissions.IsAuthenticatedOrReadOnly,IsOwner)
     serializer_class = ExpenseSerializer
     queryset = Expense.objects.all().recent()
 
